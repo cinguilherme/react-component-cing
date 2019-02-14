@@ -3,15 +3,12 @@ import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import { shallow } from 'enzyme';
 import FullHeader from '../../src/Main';
+import { context, describe, it } from 'mocha';
 
 chai.use(chaiEnzyme());
 
-const log = console.log;
-
 describe('<FullHeader />', () => {
-
     context('title property', () => {
-
         it('should have the tag header when mounted', () => {
             const wrapper = shallow(<FullHeader />);
             expect(wrapper.find('header')).to.have.lengthOf(1);
@@ -29,7 +26,7 @@ describe('<FullHeader />', () => {
 
         it('should have the tag h1 with title passed', () => {
             const wrapper = shallow(<FullHeader title="TDD" />);
-            expect(wrapper.find('h1').props().children).to.be.equal("TDD");
+            expect(wrapper.find('h1').props().children).to.be.equal('TDD');
         });
     });
 
@@ -88,7 +85,7 @@ describe('<FullHeader />', () => {
             expect(wrapper).to.have.style('background-image').equal('url()');
         });
         it('should have background image equal to bg.jpg', () => {
-            const wrapper = shallow(<FullHeader bgImg="bg.jpg"/>);
+            const wrapper = shallow(<FullHeader bgImg="bg.jpg" />);
             expect(wrapper).to.have.style('background-image').equal('url(bg.jpg)');
         });
     });
