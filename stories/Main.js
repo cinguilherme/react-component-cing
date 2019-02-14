@@ -1,11 +1,19 @@
+/* eslint-disable semi */
+/* eslint-disable no-unused-expressions */
 import React from 'react';
-import Component from '../src/Main'; // This is our component
+import FullHeader from '../src/Main'; // This is our component
 import { storiesOf } from '@storybook/react';
 
-storiesOf('Component', module)
-    .add('with lyef name', () => (
-        <Component name="lyef" />
-    ))
-    .add('with another name', () => (
-        <Component name="another" />
-    ))
+const stories = storiesOf('Component', module);
+
+stories.add('Just title', () => (
+    <FullHeader
+        title="TDD"
+    />
+)).add('Just title and subtitle', () => (
+    <FullHeader
+        title="TDD"
+        subtitle="subtitle"
+    />
+));
+

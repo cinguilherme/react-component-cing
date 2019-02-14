@@ -1,22 +1,95 @@
 import React from 'react';
-import { expect } from 'chai';
+import chai, { expect } from 'chai';
+import chaiEnzyme from 'chai-enzyme';
 import { shallow } from 'enzyme';
-import Component from '../../src/Main';
+import FullHeader from '../../src/Main';
 
-describe('Component Hello', () => {
-   it('should have h1 to display the Hello', () => {
-       const wrapper = shallow(<Component name='lyef' />);
-       expect(wrapper.find('h1')).to.have.length(1);
-   });
+chai.use(chaiEnzyme());
 
-    it('should have props for name', () => {
-        const wrapper = shallow(<Component name='lyef' />);
-        expect(wrapper.props().name).to.be.defined;
+const log = console.log;
+
+describe('<FullHeader />', () => {
+
+    context('title property', () => {
+
+        it('should have the tag header when mounted', () => {
+            const wrapper = shallow(<FullHeader />);
+            expect(wrapper.find('header')).to.have.lengthOf(1);
+        });
+
+        it('should have the tag h1 when title passed', () => {
+            const wrapper = shallow(<FullHeader title="TDD" />);
+            expect(wrapper.find('h1')).to.have.lengthOf(1);
+        });
+
+        it('should not have the tag h1 when title not passed', () => {
+            const wrapper = shallow(<FullHeader />);
+            expect(wrapper.find('h1')).to.have.lengthOf(0);
+        });
+
+        it('should have the tag h1 with title passed', () => {
+            const wrapper = shallow(<FullHeader title="TDD" />);
+            expect(wrapper.find('h1').props().children).to.be.equal("TDD");
+        });
     });
 
-    it('should create a correct DOM structure', () => {
-        const wrapper = shallow(<Component name='lyef' />);
-        const componentMock = shallow(<h1>Hello lyef!</h1>);
-        expect(wrapper.html()).to.be.equal(componentMock.html());
+    context('subtitle property', () => {
+        it('should have tag h2 when subtitle passed', () => {
+            const wrapper = shallow(<FullHeader subtitle="subtitle" />);
+            expect(wrapper.find('h2')).to.have.lengthOf(1);
+        });
+        it('should not have tag h2 when subtitle not passed', () => {
+            const wrapper = shallow(<FullHeader />);
+            expect(wrapper.find('h2')).to.have.lengthOf(0);
+        });
+        it('should have h2 tag with content subtitle', () => {
+            const wrapper = shallow(<FullHeader subtitle="subtitle" />);
+            expect(wrapper.find('h2').props().children).to.be.equal('subtitle');
+        });
+    });
+
+    context('bgColor property', () => {
+        it('should have bg color default #ccc', () => {
+            const wrapper = shallow(<FullHeader />);
+            expect(wrapper).to.have.style('background-color').equal('#ccc');
+        });
+
+        it('should have bg color #000', () => {
+            const wrapper = shallow(<FullHeader bgColor="#000" />);
+            expect(wrapper).to.have.style('background-color').equal('#000');
+        });
+    });
+
+    context('txtColor property', () => {
+        it('should have text color default #fff', () => {
+            const wrapper = shallow(<FullHeader />);
+            expect(wrapper).to.have.style('color').equal('#fff');
+        });
+        it('should have text color #ddd', () => {
+            const wrapper = shallow(<FullHeader textColor="#ddd" />);
+            expect(wrapper).to.have.style('color').equal('#ddd');
+        });
+    });
+
+    context('font property', () => {
+        it('should have font family default arial', () => {
+            const wrapper = shallow(<FullHeader />);
+            expect(wrapper).to.have.style('font-family').equal('arial');
+        });
+        it('should have font family sans', () => {
+            const wrapper = shallow(<FullHeader font="sans" />);
+            expect(wrapper).to.have.style('font-family').equal('sans');
+        });
+    });
+
+    context('bgImg', () => {
+        it('should have background image empty', () => {
+            const wrapper = shallow(<FullHeader />);
+            expect(wrapper).to.have.style('background-image').equal('url()');
+        });
+        it('should have background image equal to bg.jpg', () => {
+            const wrapper = shallow(<FullHeader bgImg="bg.jpg"/>);
+            expect(wrapper).to.have.style('background-image').equal('url(bg.jpg)');
+        });
     });
 });

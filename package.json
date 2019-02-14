@@ -1,6 +1,6 @@
 {
-  "name": "lyef-react-component",
-  "version": "1.1.2",
+  "name": "react-component-cing",
+  "version": "0.0.0",
   "description": "An opinionated boilerplate for reusable and declouped react components.",
   "main": "dist/Main.js",
   "scripts": {
@@ -15,6 +15,7 @@
     "deploy-storybook": "storybook-to-ghpages",
     "test": "./node_modules/.bin/mocha --require tests/helpers/setup.js tests/specs/**/*.spec.js",
     "test:tdd": "./node_modules/.bin/mocha --require tests/helpers/setup.js tests/specs/**/*.spec.js -w",
+    "test:cat": "./node_modules/.bin/mocha --require tests/helpers/setup.js tests/specs/**/*.spec.js -w --reporter nyan",
     "test:coverage": "./node_modules/.bin/nyc --reporter=html --reporter=text ./node_modules/.bin/mocha tests/helpers/setup.js tests/specs/**/*.spec.js",
     "lint": "./node_modules/.bin/eslint src",
     "lint:fix": "./node_modules/.bin/eslint src --fix",
@@ -28,23 +29,23 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/lyef/lyef-react-component.git"
+    "url": "git+ssh://git@github.com/cinguilherme/react-component-cing.git"
   },
   "keywords": [
     "react",
     "component",
     "base"
   ],
-  "author": "lyef (http://lyef.github.io/)",
+  "author": "cinguilherme (http://cinguilherme.github.io/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/lyef/lyef-react-component/issues"
+    "url": "https://github.com/cinguilherme/react-component-cing/issues"
   },
-  "homepage": "https://github.com/lyef/lyef-react-component#README",
+  "homepage": "https://github.com/cinguilherme/react-component-cing#README",
   "devDependencies": {
     "@personare/react-storybook-decorator-github-corner": "^0.1.4",
-    "@storybook/react": "^3.1.5",
-    "@storybook/storybook-deployer": "^2.0.0",
+    "@storybook/react": "^3.4.11",
+    "@storybook/storybook-deployer": "^2.8.1",
     "babel-cli": "^6.11.4",
     "babel-core": "^6.10.4",
     "babel-eslint": "^7.2.3",
@@ -52,6 +53,7 @@
     "babel-preset-airbnb": "^2.0.0",
     "babel-register": "^6.24.1",
     "chai": "^3.5.0",
+    "chai-enzyme": "^1.0.0-beta.1",
     "enzyme": "^3.0.0",
     "enzyme-adapter-react-16": "^1.0.0",
     "eslint": "^2.13.1",
