@@ -1,6 +1,6 @@
 {
   "name": "react-component-cing",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "An opinionated boilerplate for reusable and declouped react components.",
   "main": "dist/Main.js",
   "scripts": {
