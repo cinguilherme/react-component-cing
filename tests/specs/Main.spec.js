@@ -1,9 +1,10 @@
+/* eslint-disable no-undef */
 import React from 'react';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import { shallow } from 'enzyme';
 import FullHeader from '../../src/Main';
-import { context, describe, it } from 'mocha';
+import { describe, it } from 'mocha';
 
 chai.use(chaiEnzyme());
 
